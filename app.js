@@ -43,7 +43,7 @@ addMushroomButton.addEventListener('click', () => {
 addFriendButton.addEventListener('click', () => {
     let name = friendInputEl.textContent;
     // get the name from the input
-    let newFriend = { name: name, satisfaction: Math.floor(Math.random() * 10) };
+    let newFriend = { name: name, satisfaction: Math.ceil(Math.random() * 3) };
     // create a new friend object
     friendData.push(newFriend);
     // push it into the friends state array, passed in as an argument
@@ -64,7 +64,9 @@ function displayFriends() {
         // this is a clickable list, so add an event listener to each friend
         friendEl.addEventListener('click', () => {
             // if the friend's satisfaction level is below 3 and you have mushrooms left
-            if (friend.satisfaction < 3 && mushroomCount > 0) {
+            if (mushroomCount === 0) {
+                alert('No mushrooms. Forage more.');
+            } else if (friend.satisfaction < 3) {
                 //increment the friends satisfaction and decrement your mushrooms
                 friend.satisfaction++;
                 mushroomCount--;
