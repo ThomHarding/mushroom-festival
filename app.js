@@ -46,7 +46,7 @@ addFriendButton.addEventListener('click', () => {
     if (friendData.some(e => e.name === name)) {
         alert('Please give your friend a unique name.\r\nA number, if you have to.');
     } else {
-        let newFriend = { name: name || 'A Friend', satisfaction: 1 };
+        let newFriend = { name: name || 'Friend ' + Math.ceil(Math.random() * 1000), satisfaction: 1 };
         // create a new friend object
         friendData.push(newFriend);
         // push it into the friends state array, passed in as an argument
