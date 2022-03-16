@@ -32,7 +32,6 @@ const friendData = [
 addMushroomButton.addEventListener('click', () => {
     if (Math.random() > 0.5) {
         alert('found a mushroom!');
-
         mushroomCount++;
         displayMushrooms();
     } else {
@@ -43,14 +42,19 @@ addMushroomButton.addEventListener('click', () => {
 addFriendButton.addEventListener('click', () => {
     let name = friendInputEl.value;
     // get the name from the input
-    let newFriend = { name: name || 'A Friend', satisfaction: 1 };
-    // create a new friend object
-    friendData.push(newFriend);
-    // push it into the friends state array, passed in as an argument
-    friendInputEl.textContent = '';
-    // reset the input
-    displayFriends();
-    // display all the friends (use a function here)
+    //apparently array filtering is a thing! filters friendData for friends that already have the input name
+    if (friendData.some(e => e.name === name)) {
+        alert('Please give your friend a unique name.\r\nA number, if you have to.');
+    } else {
+        let newFriend = { name: name || 'A Friend', satisfaction: 1 };
+        // create a new friend object
+        friendData.push(newFriend);
+        // push it into the friends state array, passed in as an argument
+        friendInputEl.textContent = '';
+        // reset the input
+        displayFriends();
+        // display all the friends (use a function here)
+    }
 });
 
 function displayFriends() {
