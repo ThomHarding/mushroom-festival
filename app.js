@@ -41,7 +41,7 @@ addMushroomButton.addEventListener('click', () => {
 });
 
 addFriendButton.addEventListener('click', () => {
-    let name = friendInputEl.textContent;
+    let name = friendInputEl.value;
     // get the name from the input
     let newFriend = { name: name || 'A Friend', satisfaction: Math.ceil(Math.random() * 3) };
     // create a new friend object
